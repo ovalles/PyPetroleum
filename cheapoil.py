@@ -3,6 +3,7 @@ import pygame
 import time as time
 from random import randint
 
+import globari
 
 
 pygame.init()
