@@ -6,6 +6,7 @@ import var
 import functions
 
 import anticline
+import game_loop 
 
 def map():
     
