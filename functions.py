@@ -11,7 +11,7 @@ def button(msg,font_size,Surface,xpos,ypos,w,h,ic,ac,action=None):
     #global HudiSurf, costo, Budget, crashed
     mouse = pygame.mouse.get_pos()   #meto en una lista la posicion del mouse
     click = pygame.mouse.get_pressed()
-
+    crashed = False
     if xpos+w > mouse[0] > xpos and ypos+h > mouse[1] >ypos:
         pygame.draw.rect(Surface, ac, (xpos,ypos,w,h))
         if click[0] == 1 and action != None:
@@ -36,6 +36,7 @@ def button(msg,font_size,Surface,xpos,ypos,w,h,ic,ac,action=None):
     textRect.center = ((xpos + (w/2)),(ypos + (h/2)))
     Surface.blit(textSurf, textRect)
 
+    return crashed
 
 
 

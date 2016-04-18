@@ -142,7 +142,7 @@ def game_loop():
             well(var.x,var.y)
             var.Budget = var.Budget_inic - var.costo + var.rate
            # functions.button("Seismic",10,var.HudiSurf,100,0,100,20,var.greenl,var.green,"Seismic")
-            functions.button("Next Oilfield >>",10,var.HudiSurf,600,0,100,20,var.greenl,var.green,"Nextfield")
+            crashed = functions.button("Next Oilfield >>",10,var.HudiSurf,600,0,100,20,var.greenl,var.green,"Nextfield")
             
             elapsedTime = int(time.time() - startTime)
             functions.button("Budget: "+str(var.Budget)+" MMUSD",12, var.HudiSurf, 0,400,200,20,var.greenl,var.green,"None")
