@@ -6,7 +6,6 @@ from random import randint
 import var
 import functions
 
-
 def well(x,y):   #Funcion que despliega el pozo en las coordenadas XY
     var.y=400 * 0.05
     var.ObjeSurf = pygame.Surface([var.display_ancho, var.display_alto], pygame.SRCALPHA, 32)
@@ -42,7 +41,6 @@ def dist(xp,yp,x1,x2,y1,y2):   #Mide la distancia entre la mecha y el yacimiento
 
 
 def game_loop():
-
     global wellImg, skyImg, seisImg, subImg, fluiImg 
     #global subImg, var.CoreSurf, fluiImg, var.FluiSurf, crashed
     
@@ -108,9 +106,8 @@ def game_loop():
     while not crashed:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                crashed = True
+                quit() 
 
-            #var.x, var.y = event.pos
        
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:

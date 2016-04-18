@@ -3,6 +3,8 @@ import time as time
 from random import randint
 import var
 import map
+
+
 def text_objects(text, font):
     textSurface = font.render(text, True, var.black)
     return textSurface, textSurface.get_rect()

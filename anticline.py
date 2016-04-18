@@ -46,7 +46,6 @@ def anticline():
     global wellImg, skyImg, seisImg, subImg, fluiImg 
     #global subImg, var.CoreSurf, fluiImg, var.FluiSurf, crashed
     
-
 #CREANDO SUPERFICIES TRASPARENTES
     var.BackSurf = pygame.Surface([var.display_ancho, var.display_alto], pygame.SRCALPHA, 32)  
     var.SeisSurf = pygame.Surface([var.display_ancho, var.display_alto], pygame.SRCALPHA, 32)
@@ -105,9 +104,7 @@ def anticline():
     while not crashed:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                crashed = True
-
-            #var.x, var.y = event.pos
+		quit()
        
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
