@@ -8,7 +8,7 @@ import functions
 
 
 def well(x,y):   #Funcion que despliega el pozo en las coordenadas XY
-    var.y=400 * 0.05
+    y= 10
     var.ObjeSurf = pygame.Surface([var.display_ancho, var.display_alto], pygame.SRCALPHA, 32)
     var.ObjeSurf.blit(wellImg,(x,y))
 
@@ -57,7 +57,7 @@ def anticline():
     var.HudiSurf = pygame.Surface([var.display_ancho, var.display_alto], pygame.SRCALPHA, 32)
 
     wellImg = pygame.image.load('./010_demo/rig.png')
-    wellImg = pygame.transform.scale(wellImg, (60, 80))
+    wellImg = pygame.transform.scale(wellImg, (80, 100))
 
     skyImg = pygame.image.load('./010_demo/cielo.jpeg')
     skyImg = pygame.transform.scale(skyImg, (var.display_ancho, 100))
