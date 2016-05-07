@@ -50,7 +50,13 @@ $ python cheapoil.py
 Screenshots
 ===========
 
-.. image:: https://github.com/jaxbal/Seismic_PySegyDISPLAY/blob/master/80_SCREENSHOTS/01_segy_display.jpg
+.. image:: https://github.com/jaxbal/Seismic_PySegyDISPLAY/blob/master/80_SCREENSHOTS/03_Pypetrol.png
+
+.. image:: https://github.com/jaxbal/Seismic_PySegyDISPLAY/blob/master/80_SCREENSHOTS/05_Pypetrol.png
+
+.. image:: https://github.com/jaxbal/Seismic_PySegyDISPLAY/blob/master/80_SCREENSHOTS/10_Pypetrol.png
+
+
 
 =======
 License

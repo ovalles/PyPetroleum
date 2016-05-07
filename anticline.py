@@ -15,6 +15,11 @@ def well(x,y):   #Funcion que despliega el pozo en las coordenadas XY
 
 def plotcore(x,y):
 
+    if user_action == 1:
+        pygame.mixer.music.load('./70_SOUNDS/Core.mp3')
+        pygame.mixer.music.play(0)
+        pygame.time.wait(2000)
+
     cropped = pygame.Surface((20, 280))    #crea una superficie
     cropped.blit(subImg, (0, 0), (x, 0, 20, 280))  #pega una porcion de otra sup en la sup creada
     var.CoreSurf.blit(cropped,(x,100))   #pega la superficie creada en la pantalla
@@ -23,9 +28,16 @@ def plotcore(x,y):
     cropped.blit(fluiImg, (0, 0), (x, 0, 5, 280))  #pega una porcion de otra sup en la sup creada
     var.FluiSurf.blit(cropped,(x,100))   #pega la superficie creada en la pantalla
 
+
+
     
 def plotseis(x,y):  #Funcion que despliega la sismica adquirida
     global seisImg
+
+    if user_action == 1:
+        pygame.mixer.music.load('./70_SOUNDS/Seismic.mp3')
+        pygame.mixer.music.play(0)
+        pygame.time.wait(500)
 
     cropped = pygame.Surface((150, 280))
     cropped.blit(seisImg, (0, 0), (x-50, 0, 150, 280))
@@ -43,7 +55,7 @@ def dist(xp,yp,x1,x2,y1,y2):   #Mide la distancia entre la mecha y el yacimiento
 
 def anticline():
 
-    global wellImg, skyImg, seisImg, subImg, fluiImg 
+    global wellImg, skyImg, seisImg, subImg, fluiImg, user_action 
     #global subImg, var.CoreSurf, fluiImg, var.FluiSurf, crashed
     
 #CREANDO SUPERFICIES TRASPARENTES
@@ -85,6 +97,7 @@ def anticline():
     var.y = 400 * 0.05
     crashed = False
     LEFT = 1
+    user_action = 0
 
     startTime = time.time()
 
@@ -93,6 +106,8 @@ def anticline():
 
     var.x = randint(80, var.display_ancho-100)
     plotcore(var.x,var.y)
+
+    pygame.time.wait(27)
 
     var.x = randint(80, var.display_ancho-10)
     plotcore(var.x,var.y)
@@ -112,9 +127,11 @@ def anticline():
                 elif event.key == pygame.K_RIGHT:
                     var.x += 5
                 elif event.key == pygame.K_DOWN:
+                    user_action = 1
                     plotcore(var.x,var.y)
                     var.costo += 50   # Se cobra el nucleo
                 elif event.key == pygame.K_s:
+                    user_action = 1
                     plotseis(var.x,var.y)
                     var.costo +=100
                 
@@ -129,6 +146,15 @@ def anticline():
                     var.costo += 20
                     pygame.draw.rect(var.ProdSurf,alfa,(i,100,5,j-100))
                     
+                    if alfa == (0, 255, 0, 255):
+                        #sound = pygame.mixer.Sound("./70_SOUNDS/Cash.mp3")
+                        #sound.play(maxtime = 1000000)
+                        pygame.mixer.music.load('./70_SOUNDS/Cash.mp3')
+                        pygame.mixer.music.play(0)
+
+                    else:
+                        pygame.mixer.music.load('./70_SOUNDS/Error.mp3')
+                        pygame.mixer.music.play(0)
 
             #print(event)
             #var.gameDisplay.blit(skyImg,(0,0))
