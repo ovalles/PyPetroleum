@@ -35,16 +35,20 @@ def game_intro():
                 pygame.quit()
                 quit()
         var.gameDisplay.fill(var.white)
+        WelcomeImg = pygame.image.load('./003_Welcome/intro3pic.png')
+        var.gameDisplay.blit(WelcomeImg,(0,0))
         #largeText = pygame.font.Font('freesansbold.ttf',60)
         #TextSurf, TextRect = functions.text_objects("PyTroleo", largeText)
         #TextRect.center = ((var.display_ancho/2),(var.display_alto/2))
         #var.gameDisplay.blit(TextSurf,TextRect)
-        functions.button("PyPetrol",80, var.gameDisplay,350,150,100,50,var.white,var.white,"None")
-        functions.button("Play",20, var.gameDisplay,150,300,100,50,var.greenl,var.green,"Play")
+        #functions.button("PyPetrol",80, var.gameDisplay,350,150,100,50,var.white,var.white,"None")
+        functions.button("Play",20, var.gameDisplay,220,350,100,50,
+                         var.greenl,var.green,"Play")
 
-        functions.button("Quit",20,var.gameDisplay,450,300,100,50,var.redl,var.red,"Quit")
+        functions.button("Quit",20,var.gameDisplay,500,350,100,50,
+                         var.redl,var.red,"Quit")
 
-        functions.button("by AJ Ovalles",16, var.gameDisplay,300,50,200,50,var.white,var.white,"None")
+        #functions.button("by AJ Ovalles",16, var.gameDisplay,300,50,200,50,var.white,var.white,"None")
         pygame.display.update()
 #        clock.tick(20)
 

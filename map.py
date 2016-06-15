@@ -31,6 +31,10 @@ def map():
 #                i,j = event.pos
 
             if 206 < mouse[0] < 239 and 232 < mouse[1] <259:
+
+                pygame.mixer.music.load('./70_SOUNDS/Click.mp3')
+                pygame.mixer.music.play(0)
+
                 var.gameDisplay.blit(mapImg_ven,(0,0))
                 if event.type == pygame.MOUSEBUTTONDOWN and event.button == LEFT:
                     #game_loop()

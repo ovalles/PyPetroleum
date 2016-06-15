@@ -16,6 +16,11 @@ def button(msg,font_size,Surface,xpos,ypos,w,h,ic,ac,action=None):
     crashed = False
     if xpos+w > mouse[0] > xpos and ypos+h > mouse[1] >ypos:
         pygame.draw.rect(Surface, ac, (xpos,ypos,w,h))
+
+        pygame.mixer.music.load('./70_SOUNDS/Click.mp3')
+        pygame.mixer.music.play(0)
+        #pygame.time.wait(500)
+
         if click[0] == 1 and action != None:
             if action == "Play":
                 map.map()

@@ -5,12 +5,13 @@ import time as time
 from random import randint
 import var
 import functions
-
+import numpy as np
+import classifier as clasi
 
 def well(x,y):   #Funcion que despliega el pozo en las coordenadas XY
     y= 10
     var.ObjeSurf = pygame.Surface([var.display_ancho, var.display_alto], pygame.SRCALPHA, 32)
-    var.ObjeSurf.blit(wellImg,(x,y))
+    var.ObjeSurf.blit(wellImg,(x-30,y))
 
 
 def plotcore(x,y):
@@ -98,7 +99,8 @@ def anticline():
     crashed = False
     LEFT = 1
     user_action = 0
-
+    ifconter = 0
+    pick =np.array([[0,0]])
     startTime = time.time()
 
     var.x = randint(80, var.display_ancho-100)
@@ -142,15 +144,24 @@ def anticline():
                 elif 100 < j < 400:
 
                     alfa = var.IndeSurf.get_at((i,j))
-                    print(alfa)    
-                    var.costo += 20
+                    #print(alfa)    
+                    var.costo += 15
                     pygame.draw.rect(var.ProdSurf,alfa,(i,100,5,j-100))
                     
                     if alfa == (0, 255, 0, 255):
+                        ifconter = ifconter+1
+                        picknew = [i,j]
+                        pick = np.vstack([pick, picknew])
+                        #print 'Pick location',pick, ifconter
+                        densWell = clasi.hiercluscounter(pick[1:,:],4)
+                        print 'Weel Density :',densWell
+                        
                         #sound = pygame.mixer.Sound("./70_SOUNDS/Cash.mp3")
                         #sound.play(maxtime = 1000000)
                         pygame.mixer.music.load('./70_SOUNDS/Cash.mp3')
                         pygame.mixer.music.play(0)
+                        var.rate += 100*(1.0/densWell)
+                        print var.rate
 
                     else:
                         pygame.mixer.music.load('./70_SOUNDS/Error.mp3')
@@ -160,14 +171,19 @@ def anticline():
             #var.gameDisplay.blit(skyImg,(0,0))
             
             well(var.x,var.y)
-            var.Budget = var.Budget_inic - var.costo + var.rate
-           # functions.button("Seismic",10,var.HudiSurf,100,0,100,20,var.greenl,var.green,"Seismic")
-            crashed = functions.button("Next Oilfield >>",10,var.HudiSurf,600,0,100,20,var.greenl,var.green,"Nextfield")
+            var.Budget = int(var.Budget_inic - var.costo + var.rate)
+           # functions.button("Seismic",10,var.HudiSurf,
+                             #100,0,100,20,var.greenl,var.green,"Seismic")
+            crashed = functions.button("Next Oilfield >>",10,var.HudiSurf,
+                                       600,0,100,20,var.greenl,var.green,"Nextfield")
             
             elapsedTime = int(time.time() - startTime)
-            functions.button("Budget: "+str(var.Budget)+" MMUSD",12, var.HudiSurf, 0,400,200,20,var.greenl,var.green,"None")
-           # functions.button(str(var.rate) +" of 650 MMBls",12,var.HudiSurf, 300,400,200,20,var.greenl,var.green,"None")
-           # functions.button(str(elapsedTime) +" of 250 weeks",12, var.HudiSurf, 600,400,200,20,var.greenl,var.green,"None")
+            functions.button("Budget: "+str(var.Budget)+" MMUSD",
+                             12, var.HudiSurf, 0,400,200,20,var.greenl,var.green,"None")
+           # functions.button(str(var.rate) +" of 650 MMBls",
+                            # 12,var.HudiSurf, 300,400,200,20,var.greenl,var.green,"None")
+           # functions.button(str(elapsedTime) +" of 250 weeks",
+                             #12, var.HudiSurf, 600,400,200,20,var.greenl,var.green,"None")
             
             var.gameDisplay.blit(var.BackSurf,(0,0))
             var.gameDisplay.blit(var.SeisSurf,(0,0))
