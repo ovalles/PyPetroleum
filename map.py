@@ -37,10 +37,15 @@ def map():
 
                 var.gameDisplay.blit(mapImg_ven,(0,0))
                 if event.type == pygame.MOUSEBUTTONDOWN and event.button == LEFT:
-                    #game_loop()
-                    anticline.anticline()
+                    
+                    #CARGO EL PRIMER ESCENARIO
+                    budget = anticline.anticline(var.Budget_inic)
+
+                    #CARGO EL SEGUNDO ESCENARIO
                     game_loop.game_loop()
-                    anticline.anticline()
+
+                    #CARGO EL TERCER ESCENARIO
+                    budget = anticline.anticline(budget)
                     
             else:
                 var.gameDisplay.blit(mapImg,(0,0))

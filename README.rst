@@ -1,14 +1,21 @@
-########
-PyPetrol
-########
+=======
 
-*It is a game to learn how to discover and to exploit oil reservoirs*
+######
+PyPetroleum
+######
+
+*It's a game about hunting for oil, oil exploration*
+
+=======
 
 
 **Main Features**
 
-* Now you can select the country in which you want to exploit reservoirs
-
+* This toy is based in a friendly Pygame interface
+* Written in Python 2.7
+* It's still under construction
+* 
+* 
 .. contents:: **Table of Contents**
     :local:
     :backlinks: none
@@ -21,13 +28,17 @@ Installation
 Linux
 -----
 
-You can grab this repository using git :)
+    ::
+
+    $ git clone https://github.com/ovalles/PyPetroleum.git   
+
 
 *************
 Prerequisites
 *************
 
-Make sure you have installed Python 2.x, Numpy, pygame. You can install it using pip.
+Python 2.7 and module Pygame
+
 
 *******
 Install
@@ -35,52 +46,52 @@ Install
 
 Download the latest version from `GitHub`_. If you have ``git`` installed, you can use the following command:
 
-.. _GitHub: https://github.com/jaxbal
+.. _GitHub: https://github.com/ovalles
+
 ::
 
-$ git clone https://github.com/jaxbal/Game_PyPetrol.git
+$ git clone https://github.com/ovalles/PyPetroleum.git
 
 Finally, enter the newly created directory containing the source code and run:
 
 ::
 
-$ python cheapoil.py 
+$ python cheapoil.py
+
 
 ===========
-Screenshots
+Videos and screenshots
 ===========
 
-.. image:: https://github.com/jaxbal/Seismic_PySegyDISPLAY/blob/master/80_SCREENSHOTS/03_Pypetrol.png
 
-.. image:: https://github.com/jaxbal/Seismic_PySegyDISPLAY/blob/master/80_SCREENSHOTS/05_Pypetrol.png
-
-.. image:: https://github.com/jaxbal/Seismic_PySegyDISPLAY/blob/master/80_SCREENSHOTS/10_Pypetrol.png
-
-
+.. image:: https://github.com/ovalles/Seismic_RadonFilt/blob/master/80_SCREENSHOTS/01.png
 
 =======
 License
 =======
 
-Licensed under the `GPLv3`_ license.
+Licensed under the `GPLv2`_ license.
 
-.. _GPLv3: http://www.gnu.org/licenses/gpl-3.0.html
+.. _GPLv2: http://www.gnu.org/licenses/gpl-2.0.html
 
 =======
 Authors
 =======
 
-`Asdrubal Ovalles`_ .
+`Asdrubal Ovalles`_  
 
 .. _Asdrubal Ovalles: https://www.linkedin.com/in/asdr%C3%BAbal-ovalles-8401a352
 
-ovallesa@me.com
+Made in Venezuela, 2015
 
-Made in Venezuela, 2016
+=======
 
 ==========
 References
 ==========
 
-.. [1] Sendtex's YouTube channel
+.. [1] -
+=======
+
+
 

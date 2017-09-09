@@ -42,7 +42,7 @@ def plotseis(x,y):  #Funcion que despliega la sismica adquirida
 
     cropped = pygame.Surface((150, 280))
     cropped.blit(seisImg, (0, 0), (x-50, 0, 150, 280))
-    var.SeisSurf.blit(cropped,(x-75,100))
+    var.SeisSurf.blit(cropped,(x-50,100))
     
     
 def dist(xp,yp,x1,x2,y1,y2):   #Mide la distancia entre la mecha y el yacimiento
@@ -54,10 +54,12 @@ def dist(xp,yp,x1,x2,y1,y2):   #Mide la distancia entre la mecha y el yacimiento
 
 
 
-def anticline():
+def anticline(budgetinic):
 
     global wellImg, skyImg, seisImg, subImg, fluiImg, user_action 
     #global subImg, var.CoreSurf, fluiImg, var.FluiSurf, crashed
+
+    #print 'Entre a anticline con Budget: ', var.Budget_inic
     
 #CREANDO SUPERFICIES TRASPARENTES
     var.BackSurf = pygame.Surface([var.display_ancho, var.display_alto], pygame.SRCALPHA, 32)  
@@ -91,7 +93,7 @@ def anticline():
     IndeImg = pygame.transform.scale(IndeImg, (var.display_ancho, 300))
     var.IndeSurf.blit(IndeImg,(0,100))
 
-    var.Budget_inic=370
+    var.Budget_inic = budgetinic
     var.gameDisplay.fill(var.black)
     var.x = var.display_ancho*0.4
 
@@ -102,6 +104,10 @@ def anticline():
     ifconter = 0
     pick =np.array([[0,0]])
     startTime = time.time()
+    var.costo = 0
+    var.rate = 0
+    BudgetOld = var.Budget
+    cashFlow = 0
 
     var.x = randint(80, var.display_ancho-100)
     plotseis(var.x,var.y)
@@ -115,30 +121,45 @@ def anticline():
     plotcore(var.x,var.y)
 
 
-#POLIGONOS DE LOS YACIMIENTOS A B C
+#STARTING THE MAIN LOOP
 
 
     while not crashed:
+        '''
+        key = pygame.key.get_pressed()
+        if key[pygame.K_LEFT]:
+            var.x += -10
+        '''
+
         for event in pygame.event.get():
+            
             if event.type == pygame.QUIT:
 		quit()
        
             if event.type == pygame.KEYDOWN:
+                #print 'teclas pisadas', pygame.key.get_pressed()
                 if event.key == pygame.K_LEFT:
-                    var.x += -5
+                    var.x += -10
                 elif event.key == pygame.K_RIGHT:
-                    var.x += 5
+                    var.x += 10
                 elif event.key == pygame.K_DOWN:
+                    BudgetOld = var.Budget
                     user_action = 1
                     plotcore(var.x,var.y)
-                    var.costo += 50   # Se cobra el nucleo
+                    var.costo += 30   # Se cobra el nucleo
                 elif event.key == pygame.K_s:
+                    BudgetOld = var.Budget
                     user_action = 1
                     plotseis(var.x,var.y)
                     var.costo +=100
+                    
+ 
+            
+            
                 
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == LEFT:
                 i,j = event.pos
+                BudgetOld = var.Budget
                 if 75 < j < 100:
                     var.x = i
                 elif 100 < j < 400:
@@ -146,7 +167,8 @@ def anticline():
                     alfa = var.IndeSurf.get_at((i,j))
                     #print(alfa)    
                     var.costo += 15
-                    pygame.draw.rect(var.ProdSurf,alfa,(i,100,5,j-100))
+                    #pygame.draw.rect(var.ProdSurf,alfa,(i,100,5,j-100)) #Drawing a rectangle like a well
+                    pygame.draw.circle(var.ProdSurf, alfa, (i,j), 5)
                     
                     if alfa == (0, 255, 0, 255):
                         ifconter = ifconter+1
@@ -154,7 +176,7 @@ def anticline():
                         pick = np.vstack([pick, picknew])
                         #print 'Pick location',pick, ifconter
                         densWell = clasi.hiercluscounter(pick[1:,:],4)
-                        print 'Weel Density :',densWell
+                        print 'Well Density :',densWell
                         
                         #sound = pygame.mixer.Sound("./70_SOUNDS/Cash.mp3")
                         #sound.play(maxtime = 1000000)
@@ -171,17 +193,34 @@ def anticline():
             #var.gameDisplay.blit(skyImg,(0,0))
             
             well(var.x,var.y)
+            
             var.Budget = int(var.Budget_inic - var.costo + var.rate)
+            cashFlow = var.Budget - BudgetOld
            # functions.button("Seismic",10,var.HudiSurf,
                              #100,0,100,20,var.greenl,var.green,"Seismic")
             crashed = functions.button("Next Oilfield >>",10,var.HudiSurf,
                                        600,0,100,20,var.greenl,var.green,"Nextfield")
             
             elapsedTime = int(time.time() - startTime)
-            functions.button("Budget: "+str(var.Budget)+" MMUSD",
-                             12, var.HudiSurf, 0,400,200,20,var.greenl,var.green,"None")
-           # functions.button(str(var.rate) +" of 650 MMBls",
-                            # 12,var.HudiSurf, 300,400,200,20,var.greenl,var.green,"None")
+            
+            '''
+            myfont = pygame.font.SysFont("monospace", 15)
+            label = myfont.render("Some text!", 1, (255,255,0))
+            var.HudiSurf.blit(label, (100, 100))
+
+            '''
+            if BudgetOld > var.Budget:
+                functions.button("Budget: "+str(var.Budget)+" MMUSD " + "("+str(int(cashFlow)) + ")",
+                                 12, var.HudiSurf, 0,400,200,20,var.redl,var.red,"None")
+            else:
+                functions.button("Budget: "+str(var.Budget)+" MMUSD "+ "("+str(int(cashFlow)) + ")",
+                                 12, var.HudiSurf, 0,400,200,20,var.greenl,var.green,"None")
+
+            functions.button(" Spent: "+str(int(var.costo)),
+                             12, var.HudiSurf, 200,400,100,20,var.redl,var.red,"None")
+            functions.button(" Earned: "+str(int(var.rate)),
+                             12, var.HudiSurf, 300,400,100,20,var.greenl,var.green,"None")
+            
            # functions.button(str(elapsedTime) +" of 250 weeks",
                              #12, var.HudiSurf, 600,400,200,20,var.greenl,var.green,"None")
             
@@ -197,3 +236,7 @@ def anticline():
             
             pygame.display.update()
             var.clock.tick(60)
+
+    
+    #print 'Sali de anticline con Budget: ', var.Budget_inic
+    return var.Budget_inic

@@ -27,7 +27,7 @@ def DistCenter(point,cluster):
 
     return Dist
 
-def hiercluscounter(a,numOfClust):
+def hiercluscounter(a,max_numOfClust):
     t = np.array(a)
 
     if len(t) <=1:
@@ -35,14 +35,25 @@ def hiercluscounter(a,numOfClust):
     else:
 
         z = hac.linkage(t, 'single')
-        
-        # Autocalculando the number of cluster 
-        #knee = np.diff(z[::-1, 2], 2)
-        #num_clust1 = knee.argmax() + 2
-        #print 'Number of Cluster', num_clust1
-        #knee[knee.argmax()] = 0
-        #num_clust2 = knee.argmax() + 2
-        #clusLabel = hac.fcluster(z, num_clust1, 'maxclust')
+        if len(t) <=3:
+            numOfClust = 2
+        else:
+
+            # Autocalculando the number of cluster
+            knee = np.diff(z[::-1, 2], 2)
+            
+            # This method perform better number of cluster calc            
+            numOfClust = knee.argmax() + 2
+            print 'Number of Cluster 1st method', numOfClust
+            
+            # This method overestimate the number of cluster
+            # I use the if a a threshold
+            knee[knee.argmax()] = 0
+            numOfClust = knee.argmax() + 2
+            print 'Number of Cluster 2nd method', numOfClust
+            if numOfClust > max_numOfClust:
+                numOfClust = max_numOfClust
+            
 
         # Determining the cluster label of each point
         clusLabel = hac.fcluster(z, numOfClust, 'maxclust') #4 is the number of cluster
