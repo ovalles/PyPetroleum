@@ -63,9 +63,9 @@ $ python cheapoil.py
 Videos and screenshots
 ===========
 
-
-.. image:: https://github.com/ovalles/Seismic_RadonFilt/blob/master/80_SCREENSHOTS/01.png
-
+.. image:: https://github.com/ovalles/Seismic_RadonFilt/blob/master/80_SCREENSHOTS/03_Pypetrol.png
+.. image:: https://github.com/ovalles/Seismic_RadonFilt/blob/master/80_SCREENSHOTS/05_Pypetrol.png
+.. image:: https://github.com/ovalles/Seismic_RadonFilt/blob/master/80_SCREENSHOTS/10_Pypetrol.png
 =======
 License
 =======
