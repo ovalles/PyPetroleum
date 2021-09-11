@@ -41,10 +41,10 @@ Install
 
 Download the latest version from `GitHub`_. If you have ``git`` installed, you can use the following command:
 
-.. _GitHub: https://github.com/jaxbal
+.. _GitHub: https://github.com/ovalles
 ::
 
-$ git clone https://github.com/jaxbal/Game_PyPetrol.git
+$ git clone https://github.com/ovalles/PyPetroleum.git
 
 Finally, enter the newly created directory containing the source code and run:
 
