@@ -32,7 +32,9 @@ Make sure you have installed Python 2.x, Numpy, pygame. You can install it using
 Additional packages:
 
 sudo apt-get install python-pygame
+
 sudo apt-get install python-numpy python-scipy python-matplotlib
+
 *******
 Install
 *******
