@@ -130,6 +130,10 @@ def anticline(budgetinic):
         if key[pygame.K_LEFT]:
             var.x += -10
         '''
+        myfont = pygame.font.SysFont("monospace", 15)
+        label = myfont.render("Arrow keys: Move Rig. Down: Core. s: Seismic. Mouse: Drill", 1, (255,255,0))
+        var.HudiSurf.blit(label, (00, 00))
+
 
         for event in pygame.event.get():
             
@@ -203,12 +207,6 @@ def anticline(budgetinic):
             
             elapsedTime = int(time.time() - startTime)
             
-            '''
-            myfont = pygame.font.SysFont("monospace", 15)
-            label = myfont.render("Some text!", 1, (255,255,0))
-            var.HudiSurf.blit(label, (100, 100))
-
-            '''
             if BudgetOld > var.Budget:
                 functions.button("Budget: "+str(var.Budget)+" MMUSD " + "("+str(int(cashFlow)) + ")",
                                  12, var.HudiSurf, 0,400,200,20,var.redl,var.red,"None")

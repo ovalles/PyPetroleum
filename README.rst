@@ -1,21 +1,14 @@
-=======
+########
+PyPetrol
+########
 
-######
-PyPetroleum
-######
-
-*It's a game about hunting for oil, oil exploration*
-
-=======
+*It is a game to learn how to discover and to exploit oil reservoirs*
 
 
 **Main Features**
 
-* This toy is based in a friendly Pygame interface
-* Written in Python 2.7
-* It's still under construction
-* 
-* 
+* Now you can select the country in which you want to exploit reservoirs
+
 .. contents:: **Table of Contents**
     :local:
     :backlinks: none
@@ -28,70 +21,70 @@ Installation
 Linux
 -----
 
-    ::
-
-    $ git clone https://github.com/ovalles/PyPetroleum.git   
-
+You can grab this repository using git :)
 
 *************
 Prerequisites
 *************
 
-Python 2.7 and module Pygame
+Make sure you have installed Python 2.x, Numpy, pygame. You can install it using pip.
 
+Additional packages:
 
+sudo apt-get install python-pygame
+sudo apt-get install python-numpy python-scipy python-matplotlib
 *******
 Install
 *******
 
 Download the latest version from `GitHub`_. If you have ``git`` installed, you can use the following command:
 
-.. _GitHub: https://github.com/ovalles
-
+.. _GitHub: https://github.com/jaxbal
 ::
 
-$ git clone https://github.com/ovalles/PyPetroleum.git
+$ git clone https://github.com/jaxbal/Game_PyPetrol.git
 
 Finally, enter the newly created directory containing the source code and run:
 
 ::
 
-$ python cheapoil.py
-
+$ python cheapoil.py 
 
 ===========
-Videos and screenshots
+Screenshots
 ===========
 
-.. image:: https://github.com/ovalles/PyPetroleum/blob/master/80_SCREENSHOTS/03_Pypetrol.png
-.. image:: https://github.com/ovalles/PyPetroleum/blob/master/80_SCREENSHOTS/05_Pypetrol.png
-.. image:: https://github.com/ovalles/PyPetroleum/blob/master/80_SCREENSHOTS/10_Pypetrol.png
+.. image:: https://github.com/jaxbal/Seismic_PySegyDISPLAY/blob/master/80_SCREENSHOTS/03_Pypetrol.png
+
+.. image:: https://github.com/jaxbal/Seismic_PySegyDISPLAY/blob/master/80_SCREENSHOTS/05_Pypetrol.png
+
+.. image:: https://github.com/jaxbal/Seismic_PySegyDISPLAY/blob/master/80_SCREENSHOTS/10_Pypetrol.png
+
+
+
 =======
 License
 =======
 
-Licensed under the `GPLv2`_ license.
+Licensed under the `GPLv3`_ license.
 
-.. _GPLv2: http://www.gnu.org/licenses/gpl-2.0.html
+.. _GPLv3: http://www.gnu.org/licenses/gpl-3.0.html
 
 =======
 Authors
 =======
 
-`Asdrubal Ovalles`_  
+`Asdrubal Ovalles`_ .
 
 .. _Asdrubal Ovalles: https://www.linkedin.com/in/asdr%C3%BAbal-ovalles-8401a352
 
-Made in Venezuela, 2015
+ovallesa@me.com
 
-=======
+Made in Venezuela, 2016
 
 ==========
 References
 ==========
 
-.. [1] -
-=======
-
-
+.. [1] Sendtex's YouTube channel
 
