@@ -56,11 +56,11 @@ $ python cheapoil.py
 Screenshots
 ===========
 
-.. image:: https://github.com/ovalles/Seismic_PySegyDISPLAY/blob/master/80_SCREENSHOTS/03_Pypetrol.png
+.. image:: https://github.com/ovalles/ovalles/PyPetroleum/tree/master/03_Pypetrol.png
 
-.. image:: https://github.com/ovalles/Seismic_PySegyDISPLAY/blob/master/80_SCREENSHOTS/05_Pypetrol.png
+.. image:: https://github.com/ovalles/PyPetroleum/tree/master/05_Pypetrol.png
 
-.. image:: https://github.com/ovalles/Seismic_PySegyDISPLAY/blob/master/80_SCREENSHOTS/10_Pypetrol.png
+.. image:: https://github.com/ovalles/PyPetroleum/tree/master/10_Pypetrol.png
 
 
 
